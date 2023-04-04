@@ -27,7 +27,7 @@ while True:
     if user_profile == "Bakery worker":
         print("""Choose what you want to do:
         1. Create a new bake
-        2. Change an existing bake
+        2. Remove the bake from the offer
         """)
         action = ""
         while action != "1" or action != "2":
@@ -38,8 +38,8 @@ while True:
                 print("Create a new bake")
                 break
             if action == "2":
-                action = "Change bake"
-                print("Change bake")
+                action = "Remove bake"
+                print("Remove the bake from the offer")
                 break
 
     if user_profile == "Customer":
@@ -50,6 +50,11 @@ while True:
 
     if action == "Create bake":
         cake.create_bake()
+
+    if action == "Remove bake":
+        print("Enter the name of the cake you want to delete")
+        bake_to_remove = input()
+        cake.remove_bake(bake_to_remove)
 
     #ask the user to continue
     print("Do you want to terminate the program? (Y/N)")

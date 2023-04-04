@@ -53,8 +53,41 @@ def save_bake(new_bake):
     Taste: {new_bake.taste}
     Additives: {new_bake.additives}
     Filling: {new_bake.filling}
-    
     """)
     file.close()
 
     
+def remove_bake(bake):
+     
+    with open("bakery_offer.txt", "r") as prev_file, open('new_offer.txt', 'w') as new_file:
+        lines = prev_file.readlines()
+        for x, line in enumerate(lines):
+            if bake in line:
+                first_line_to_del = x
+
+        no_of_line = 0
+        for line in lines:
+            if no_of_line != first_line_to_del and no_of_line != first_line_to_del+1 and no_of_line != first_line_to_del+2 and no_of_line != first_line_to_del+3 and no_of_line != first_line_to_del+4 and no_of_line != first_line_to_del+5:
+                new_file.write(line)
+            no_of_line+=1
+
+    os.remove('bakery_offer.txt')
+    os.rename('new_offer.txt', 'bakery_offer.txt')
+
+
+
+        
+
+        
+                
+
+                
+    
+    # file = open('bakery_offer.txt', 'r+')
+    # new_file = file.readlines()
+    # file.seek(0)
+    # for line in new_file:
+    #      if bake not in line:
+    #           file.write(line)
+    # file.truncate()
+    # file.close()
