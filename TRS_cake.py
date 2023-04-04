@@ -1,3 +1,5 @@
+import os
+
 class Cake:
     known_types = ['cake', 'muffin', 'meringue', 'biscuit', 'eclair', 'christmas', 'pretzel','other']
 
@@ -28,6 +30,31 @@ def create_bake():
          save_bake(new_bake)
 
     
-def save_bake():
+def save_bake(new_bake):
     print("Saving the bake....")
-    #TO DO: Create a file with the bakery offer and write a function that saves new cakes there
+    
+    current_dir = os.getcwd()
+    filename = 'bakery_offer.txt'
+    fullpath = os.path.join(current_dir, filename)
+
+    #creating the file 'bakery_offer.txt' if it doesn't exist
+    if os.path.isfile(fullpath):
+        print(f'File {filename} exist')
+        print(f'Path: {fullpath}')
+    else:
+        print('Creating a file {filename}h')
+        open(fullpath, 'x').close()
+        print('File {filename} created')
+
+    file = open(fullpath, 'a')
+    file.write(f"""
+    Name: {new_bake.name}
+    Kind: {new_bake.kind}
+    Taste: {new_bake.taste}
+    Additives: {new_bake.additives}
+    Filling: {new_bake.filling}
+    
+    """)
+    file.close()
+
+    
