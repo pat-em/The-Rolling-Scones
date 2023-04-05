@@ -24,6 +24,7 @@ while user_profile != "1" or user_profile != "2":
 
 while True:
 
+# selecting a user profile:
     if user_profile == "Bakery worker":
         print("""Choose what you want to do:
         1. Create a new bake
@@ -48,6 +49,7 @@ while True:
         2. Browse the offer
         3. Browse favorites""")
 
+# actions for the user Bakery worker:
     if action == "Create bake":
         new_bake_name = input("Name of the new bake: ")
         naw_bake_kind = input("Kind: ")
@@ -65,7 +67,18 @@ while True:
         bake_to_remove = input()
         cake.Cake.remove_bake(bake_to_remove)
 
-    #ask the user to continue
+# actions for the user Bakery worker:
+    if action == "Submit your order":
+        pass
+
+    if action == "Browse the offer":
+        pass
+
+    if action == "Browse favorites":
+        pass  
+
+    
+# ask the user to continue
     print("Do you want to terminate the program? (Y/N)")
     if input("").upper().startswith("Y"):
         break
