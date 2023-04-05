@@ -49,12 +49,21 @@ while True:
         3. Browse favorites""")
 
     if action == "Create bake":
-        cake.create_bake()
+        new_bake_name = input("Name of the new bake: ")
+        naw_bake_kind = input("Kind: ")
+        new_bake_taste = input("Taste: ")
+        new_bake_additives = input("Additives: ")
+        new_bake_filling = input("Filling: ")
+        new_bake = cake.Cake(new_bake_name, naw_bake_kind, new_bake_taste, new_bake_additives, new_bake_filling)
+        print("Do you want to save the bake? (Y/N)")
+        answer = input("")
+        if answer.upper() == "Y":
+            cake.Cake.save_bake(new_bake)
 
     if action == "Remove bake":
         print("Enter the name of the cake you want to delete")
         bake_to_remove = input()
-        cake.remove_bake(bake_to_remove)
+        cake.Cake.remove_bake(bake_to_remove)
 
     #ask the user to continue
     print("Do you want to terminate the program? (Y/N)")
