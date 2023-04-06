@@ -39,7 +39,37 @@ class Cake:
         Filling: {self.filling}
         """)
         file.close()
- 
+
+    def change_bake(self):
+        #change bake attributes before entering in bakery offer
+        att_set = ""
+        print("""
+Choose what you want to change:
+N (name)
+K (kind)
+T (taste)
+A (additives)
+F (filling)
+    """)
+        while True:
+            print("Enter N, K, T, A or F")
+            att_set = input("")
+            if att_set == "N":
+                self.name = input("New name:")
+                break
+            if att_set == "K":
+                self.kind = input("New kind:")
+                break
+            if att_set == "T":
+                self.taste = input("New taste:")
+                break
+            if att_set == "A":
+                self.additives = input("New additives:")
+                break
+            if att_set == "F":
+                self.filling = input("New filling:")
+                break
+
     def remove_bake(bake):
         #remove bake with given name from file
         

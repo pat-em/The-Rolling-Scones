@@ -57,10 +57,33 @@ while True:
         new_bake_additives = input("Additives: ")
         new_bake_filling = input("Filling: ")
         new_bake = cake.Cake(new_bake_name, naw_bake_kind, new_bake_taste, new_bake_additives, new_bake_filling)
-        print("Do you want to save the bake? (Y/N)")
-        answer = input("")
-        if answer.upper() == "Y":
-            cake.Cake.save_bake(new_bake)
+        
+        
+        answer = ""
+        while True:
+            print("Do you want to save the bake?")
+            answer = input("")
+            if answer.upper() == "Y":
+                cake.Cake.save_bake(new_bake)
+                break
+            if answer.upper() == "N":
+                bake_answer = ""
+                print("""
+Do you want to change the data or delete all entered data?
+enter "C" for data change
+enter "D" to clear all inputs""")
+                while True:
+                    bake_answer = input("")
+                    if bake_answer.upper() == "C":
+                        cake.Cake.change_bake(new_bake)
+                        break
+                    if bake_answer.upper() == "D":
+                        print("Changes have not been saved.")
+                        break 
+                    else:
+                        print("Select C(change) or D(delete).")                 
+            else:
+                print("Select Y(yes) or N(not).")
 
     if action == "Remove bake":
         print("Enter the name of the cake you want to delete")
