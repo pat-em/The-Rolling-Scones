@@ -40,6 +40,7 @@ class Cake:
         """)
         file.close()
 
+
     def change_bake(self):
         #change bake attributes before entering in bakery offer
         att_set = ""
@@ -70,6 +71,7 @@ F (filling)
                 self.filling = input("New filling:")
                 break
 
+
     def remove_bake(bake):
         #remove bake with given name from file
         
@@ -91,6 +93,7 @@ F (filling)
 
         os.remove('bakery_offer.txt')
         os.rename('new_offer.txt', 'bakery_offer.txt')
+
 
     def add_bake_to_order():
         #displaying the names of the cakes and entering the cakes entered by the customer into the "order.txt" file
@@ -132,12 +135,19 @@ F (filling)
                 file.write('\n')
                 file.close()
                 print(f'{b[14:]} added to order')
-   
-                    
+
 
     def browse_offer():
         #displaying the contents of the file "bakery_offer.txt"
 
         with open("bakery_offer.txt", "r") as file:
+            bakery_offer = file.read()
+            print(bakery_offer)
+  
+    
+    def browse_order():
+        #displaying the contents of the file "order.txt"
+
+        with open("order.txt", "r") as file:
             bakery_offer = file.read()
             print(bakery_offer)

@@ -23,7 +23,8 @@ while user_profile != "1" or user_profile != "2":
 #---    main loop   ---
 while True:
 
-# selecting a user profile:
+
+# selecting action (Bakery worker):
     if user_profile == "Bakery worker":
         print("""Choose what you want to do:
         1. Create a new bake
@@ -42,9 +43,11 @@ while True:
                 print("Remove the bake from the offer")
                 break
 
+
+# selecting action (Customer):
     if user_profile == "Customer":
         print("""Choose what you want to do:
-        1. Submit your order
+        1. Place order
         2. Browse the offer
         3. Browse your order""")
         action = ""
@@ -52,8 +55,8 @@ while True:
             print("Select 1 or 2:")
             action = input()
             if action == "1":
-                action = "Submit your order"
-                print("Submit your order")
+                action = "Place order"
+                print("Place order")
                 break
             if action == "2":
                 action = "Browse the offer"
@@ -65,6 +68,7 @@ while True:
                 break
 
 # actions for the user Bakery worker:
+
     if action == "Create bake":
         new_bake_name = input("Name of the new bake: ")
         naw_bake_kind = input("Kind: ")
@@ -75,18 +79,22 @@ while True:
         
         
         answer = ""
+
         while True:
             print("Do you want to save the bake?")
             answer = input("")
+
             if answer.upper() == "Y":
                 cake.Cake.save_bake(new_bake)
                 break
             if answer.upper() == "N":
                 bake_answer = ""
+
                 print("""
 Do you want to change the data or delete all entered data?
 enter "C" for data change
 enter "D" to clear all inputs""")
+                
                 while True:
                     bake_answer = input("")
                     if bake_answer.upper() == "C":
@@ -96,24 +104,30 @@ enter "D" to clear all inputs""")
                         print("Changes have not been saved.")
                         break 
                     else:
-                        print("Select C(change) or D(delete).")                 
+                        print("Select C(change) or D(delete).") 
+
             else:
                 print("Select Y(yes) or N(not).")
+
 
     if action == "Remove bake":
         print("Enter the name of the cake you want to delete")
         bake_to_remove = input()
         cake.Cake.remove_bake(bake_to_remove)
 
+
 # actions for the user Customer:
-    if action == "Submit your order":
+
+    if action == "Place order":
         cake.Cake.add_bake_to_order()
+
 
     if action == "Browse the offer":
         cake.Cake.browse_offer()
 
+
     if action == "Browse your order":
-        pass  
+        cake.Cake.browse_order()  
 
     
 # ask the user to continue
