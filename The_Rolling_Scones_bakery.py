@@ -21,7 +21,6 @@ while user_profile != "1" or user_profile != "2":
         break
 
 #---    main loop   ---
-
 while True:
 
 # selecting a user profile:
@@ -47,7 +46,23 @@ while True:
         print("""Choose what you want to do:
         1. Submit your order
         2. Browse the offer
-        3. Browse favorites""")
+        3. Browse your order""")
+        action = ""
+        while action != "1" or action != "2" or action != "3":
+            print("Select 1 or 2:")
+            action = input()
+            if action == "1":
+                action = "Submit your order"
+                print("Submit your order")
+                break
+            if action == "2":
+                action = "Browse the offer"
+                print("Browse the offer")
+                break
+            if action == "3":
+                action = "Browse your order"
+                print("Browse your order")
+                break
 
 # actions for the user Bakery worker:
     if action == "Create bake":
@@ -90,14 +105,14 @@ enter "D" to clear all inputs""")
         bake_to_remove = input()
         cake.Cake.remove_bake(bake_to_remove)
 
-# actions for the user Bakery worker:
+# actions for the user Customer:
     if action == "Submit your order":
-        pass
+        cake.Cake.add_bake_to_order()
 
     if action == "Browse the offer":
-        pass
+        cake.Cake.browse_offer()
 
-    if action == "Browse favorites":
+    if action == "Browse your order":
         pass  
 
     

@@ -91,3 +91,53 @@ F (filling)
 
         os.remove('bakery_offer.txt')
         os.rename('new_offer.txt', 'bakery_offer.txt')
+
+    def add_bake_to_order():
+        #displaying the names of the cakes and entering the cakes entered by the customer into the "order.txt" file
+
+        bake_list = []
+
+        #creating the file 'bakery_offer.txt' if it doesn't exist:
+        current_dir = os.getcwd()
+        filename = 'order.txt'
+        fullpath = os.path.join(current_dir, filename)
+
+        if os.path.isfile(fullpath):
+            print(f'File {filename} exist')
+        else:
+            open(fullpath, 'x').close()
+            print('File {filename} created')
+
+        
+        print ("Choose which cake to add to the order:")
+
+        with open('bakery_offer.txt', 'r') as file:
+            bakery_offer = file.readlines()
+            for line in bakery_offer:
+                if "Name" in line:
+                    bake_list.append(line)
+        for bake in bake_list:
+            print(bake[14:-1])
+
+        bake_to_add = input()
+
+        for i in range(len(bake_list)):
+            bake_list[i] = bake_list[i].lower()
+
+        for b in bake_list:
+            if bake_to_add.lower() in b:
+                #saving data to a file:
+                file = open(fullpath, 'a')
+                file.write(b)
+                file.write('\n')
+                file.close()
+                print(f'{b[14:]} added to order')
+   
+                    
+
+    def browse_offer():
+        #displaying the contents of the file "bakery_offer.txt"
+
+        with open("bakery_offer.txt", "r") as file:
+            bakery_offer = file.read()
+            print(bakery_offer)
